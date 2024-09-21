@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+<h1>Register for R V Hospital</h1>
+
+    <div class="register-container">
+        <form id="registerForm">
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <label for="userType">User Type</label><br>
+            <select id="userType">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select><br><br>
+
+            <input type="submit" value="Register">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const userType = document.getElementById('userType').value;
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Check if the username already exists
+            const userExists = users.some(user => user.username === username);
+
+            if (userExists) {
+                alert('Username already exists. Please choose another one.');
+            } else {
+                users.push({ username, password, userType });
+                localStorage.setItem('users', JSON.stringify(users));
+                alert('Registration successful!');
+                window.location.href = 'login.html';  // Redirect to login page
+            }
+        });
+    </script>
+
+</body>
+</html>

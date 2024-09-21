@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Facilities</title>
+    <link rel="stylesheet" href="facilities.css">
+</head>
+<body>
+
+    <header>
+        <h1>R V Hospital - Facilities</h1>
+    </header>
+
+    <section id="facilities">
+        <h2>Our Facilities</h2>
+        <div class="search-bar">
+            <input type="text" placeholder="Search facilities...">
+        </div>
+        <ul>
+            <li>24/7 Emergency Services</li>
+            <li>Advanced Diagnostic Laboratory</li>
+            <li>In-Patient and Out-Patient Care</li>
+            <li>Pharmacy Services</li>
+            <li>Specialized Surgery Units</li>
+            <li>Well-equipped Intensive Care Units</li>
+            <li>Telemedicine and Online Consultations</li>
+        </ul>
+
+        <div class="facility-container">
+            <!-- Operation Rooms -->
+            <div class="facility">
+                <img src="https://img.freepik.com/premium-photo/hospital-room-with-large-operating-room-large-operating-table_374761-1279.jpg" alt="Operation Room">
+                <h3>Operation Rooms</h3>
+                <p>State-of-the-art operation theaters equipped with the latest technology for complex surgeries.</p>
+            </div>
+
+            <!-- Scanning Center -->
+            <div class="facility">
+                <img src="https://www.zenhospital.in/wp-content/uploads/2022/05/MG_7114-scaled.jpg" alt="Scanning Center">
+                <h3>Scanning Center</h3>
+                <p>Advanced diagnostic imaging center for CT scans, MRI, ultrasound, and more.</p>
+            </div>
+
+            <!-- Canteen -->
+            <div class="facility">
+                <img src="https://5.imimg.com/data5/SY/SA/RY/ANDROID-83307468/product-jpeg-500x500.jpg" alt="Canteen">
+                <h3>Canteen</h3>
+                <p>Hygienic and well-maintained canteen offering a variety of meals for patients and visitors.</p>
+            </div>
+        </div>
+
+        <div class="facility-details">
+            <h3>Facility Details</h3>
+            <p>Our hospital is committed to providing the highest quality of care and services. We ensure that each facility is equipped with modern amenities to cater to the needs of our patients. From advanced diagnostic tools to comfortable patient rooms, every aspect of our hospital is designed with patient well-being in mind.</p>
+        </div>
+
+        <div class="feedback-section">
+            <h3>Give Us Your Feedback</h3>
+            <textarea placeholder="Your feedback here..."></textarea>
+            <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+            <div id="success-message" class="success-message">
+                Thank you for your feedback! We appreciate your input.
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function submitFeedback() {
+            // Display the success message
+            document.getElementById('success-message').style.display = 'block';
+
+            // Optionally, you can add more logic to handle the feedback submission
+            // For example, sending the feedback to a server via AJAX
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <header>
+        <h1>R V Hospital</h1>
+        <nav>
+            <ul>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="#" onclick="checkAdminLogin()">Admin</a></li>
+                <li><a href="#" onclick="checkLogin()">Book Appointment</a></li>
+                <li><a href="login.html"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h2>Welcome to the R V Hospital</h2>
+        <p>
+            Our system allows you to manage appointments, register new patients, and handle administrative tasks with ease. 
+            Streamline your hospital processes for a better experience.
+        </p>
+
+        <!-- Image Slider -->
+        <div class="slider">
+            <div class="slides">
+                <div class="slide">
+                    <img src="https://media.gettyimages.com/id/1312706413/photo/modern-hospital-building.jpg?s=612x612&w=0&k=20&c=oUILskmtaPiA711DP53DFhOUvE7pfdNeEK9CfyxlGio=" alt="State-of-the-Art Facilities">
+                </div>
+                <div class="slide">
+                    <img src="https://png.pngtree.com/background/20230520/original/pngtree-3d-pharma-shop-counter-top-with-shelves-picture-image_2672472.jpg" alt="Expert Medical Care">
+                </div>
+                <div class="slide">
+                    <img src="https://media.gettyimages.com/id/182175009/photo/entrance-to-emergency-room.jpg?s=612x612&w=0&k=20&c=zmHoIUGp1qunmFMByj0P1w6U4uQHzGgooj22Cw4WiEY=" alt="Compassionate Service">
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="prevSlide()">&#10094;</button>
+                <button class="nav-button" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            const slides = document.querySelector('.slides');
+            const totalSlides = document.querySelectorAll('.slide').length;
+            slides.style.transform = `translateX(${-slideIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % document.querySelectorAll('.slide').length;
+            showSlides();
+        }
+
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + document.querySelectorAll('.slide').length) % document.querySelectorAll('.slide').length;
+            showSlides();
+        }
+
+        // Auto-slide every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Initialize slides
+        showSlides();
+
+        // Function to clear login details
+        function clearLoginDetails() {
+            localStorage.removeItem('loggedIn');
+            localStorage.removeItem('userType');
+        }
+
+        // Function to check if the user is logged in for booking an appointment
+        function checkLogin() {
+            const isLoggedIn = localStorage.getItem('loggedIn');
+            const userType = localStorage.getItem('userType');
+
+            if (isLoggedIn === 'true') {
+                if (userType === 'admin') {
+                    window.location.href = "admin.html";
+                } else {
+                    window.location.href = "appointment.html";
+                }
+            } else {
+                alert("Please log in first.");
+                window.location.href = "login.html";
+            }
+        }
+
+        // Function to check if the admin is logged in
+        function checkAdminLogin() {
+            const isLoggedIn = localStorage.getItem('loggedIn');
+            const userType = localStorage.getItem('userType');
+
+            if (isLoggedIn === 'true' && userType === 'admin') {
+                window.location.href = "admin.html";
+            } else {
+                alert("Please log in first.");
+                window.location.href = "login.html";
+            }
+        }
+
+        // Clear login details when the page loads
+        window.onload = clearLoginDetails;
+    </script>
+
+</body>
+</html>

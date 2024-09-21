@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="appoint.css">
+</head>
+<body>
+    <!-- Appointment Form -->
+    <form id="appointmentForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="doctor">Doctor:</label>
+        <input type="text" id="doctor" name="doctor" required>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+        <button type="submit">Add Appointment</button>
+    </form>
+
+    <!-- Appointments Table -->
+    <table id="appointments">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Appointments will be populated here -->
+        </tbody>
+    </table>
+
+    <button id="acceptAllBtn">Accept All</button>
+
+    <script src="appointment.js"></script>
+</body>
+</html>

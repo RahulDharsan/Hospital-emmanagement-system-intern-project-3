@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+   
+</head>
+<body>
+<h1>Login to R V Hospital</h1>
+
+    <div class="login-container">
+        <form id="loginForm">
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            const user = users.find(user => user.username === username && user.password === password);
+
+            if (user) {
+                localStorage.setItem('userType', user.userType);
+                localStorage.setItem('loggedIn', 'true');
+                
+                if (user.userType === 'admin') {
+                    window.location.href = 'admin.html';
+                } else {
+                    window.location.href = 'appointment.html';
+                }
+            } else {
+                alert('Invalid credentials.');
+            }
+        });
+    </script>
+
+</body>
+</html>
